@@ -14,3 +14,5 @@ There are three components (Dashboard, Info, Cities), Dashboard components conta
 - Actions file:
   Contains **loadCityWeatherAction** for getting searched city, **successLoadingAction** if city is found, **failedLoadingAction** if not.
   **reloadAddedCitiesAction** called when a city added to local storage or removed, **stopReloadingAction** to tell that loading is finished.
+
+[Live Sample](https://abdelillah-tam.github.io/weather/)
