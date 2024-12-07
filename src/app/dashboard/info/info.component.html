@@ -1,0 +1,44 @@
+<ul
+  class="w-full h-full flex flex-col justify-evenly bg-white rounded-2xl p-8 mb:p-4"
+
+>
+  <li class="flex justify-between items-center">
+    <div>
+      <p class="text-gray-500">Current weather</p>
+      <p class="text-2xl mb:text-xl">{{ city.name }}</p>
+    </div>
+    @if(!addedAlready){
+    <button mat-flat-button (click)="addCity()">Add</button>
+    }@else{
+    <button mat-stroked-button (click)="remove()">Remove</button>
+    }
+  </li>
+  <li class="flex flex-col items-center">
+    <div class="flex items-center">
+      
+      <img
+        [src]="
+          'https://openweathermap.org/img/wn/' +
+          city.weather[0].icon +
+          '@2x.png'
+        "
+      />
+      <div>
+        <p class="text-xl font-bold mb:text-base">{{ city.weather[0].main }}</p>
+        <p>{{ city.weather[0].description }}</p>
+      </div>
+    </div>
+  </li>
+  <li class="flex flex-col items-center">
+    <p class="text-xl font-bold mb:text-base">Humidity</p>
+    <p>{{ city.main.humidity }}%</p>
+  </li>
+  <li class="flex flex-col items-center">
+    <p class="text-xl font-bold mb:text-base">Temperature</p>
+    <p>{{ city.main.temp }}°C</p>
+  </li>
+  <li class="flex flex-col items-center">
+    <p class="text-xl font-bold mb:text-base">Wind Speed</p>
+    <p>{{ city.wind.speed }}Km/h</p>
+  </li>
+</ul>

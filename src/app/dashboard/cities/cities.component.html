@@ -1,0 +1,18 @@
+@if (!cities.length) {
+<div
+  class="w-full h-full bg-white rounded-2xl p-8 mb:p-4 flex justify-center items-center"
+>
+  <p>No Cities Added Yet !</p>
+</div>
+}@else{
+<ul class="cities-ul">
+  <li><h1 class="text-2xl font-bold mb:text-xl">Cities added</h1></li>
+  @for (item of cities; track $index) {
+  <li class="city pt-8 mb:pt-4 flex justify-between items-center">
+    <p class="cursor-pointer" (click)="getCityWeather($index)">{{ item }}</p>
+    <button mat-stroked-button (click)="remove($index)">Remove</button>
+  </li>
+  }
+</ul>
+
+}
