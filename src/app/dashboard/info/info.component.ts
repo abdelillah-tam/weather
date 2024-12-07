@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { reloadAddedCitiesAction } from '../../store/weather.actions';
+import { reloadSelector } from '../../store/weather.selectors';
 
 @Component({
   selector: 'app-info',
@@ -26,6 +27,9 @@ export class InfoComponent implements OnInit {
     if (localStorage.getItem(this.city.name)) {
       this.addedAlready = true;
     }
+    this.store.select(reloadSelector).subscribe((data) => {
+      if (data) this.reload();
+    });
   }
 
   addCity() {
@@ -41,5 +45,12 @@ export class InfoComponent implements OnInit {
     localStorage.removeItem(this.city.name);
     this.store.dispatch(reloadAddedCitiesAction());
     this.addedAlready = false;
+  }
+  reload() {
+    if (localStorage.getItem(this.city.name)) {
+      this.addedAlready = true;
+    } else {
+      this.addedAlready = false;
+    }
   }
 }

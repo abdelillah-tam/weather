@@ -3,6 +3,7 @@ import { City } from '../../model/city';
 import { Store } from '@ngrx/store';
 import {
   loadCityWeatherAction,
+  reloadAddedCitiesAction,
   stopReloadingAction,
 } from '../../store/weather.actions';
 import { MatButtonModule } from '@angular/material/button';
@@ -44,6 +45,7 @@ export class CitiesComponent implements OnInit {
 
   remove(index: number) {
     localStorage.removeItem(this.cities[index]);
+    this.store.dispatch(reloadAddedCitiesAction());
     this.getCities();
   }
 
